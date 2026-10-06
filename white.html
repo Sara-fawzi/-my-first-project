@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Error</title>
+<style>
+body {
+margin: 0;
+background-color: #ffffff;
+color: #000;
+font-family: sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+text-align: center;
+overflow: hidden;
+cursor: wait;
+}
+.freeze-text {
+font-size: 1.1rem;
+color: #555;
+animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+0% { opacity: 1; }
+50% { opacity: 0.3; }
+100% { opacity: 1; }
+}
+.awareness-screen {
+display: none;
+background-color: #000;
+color: #fff;
+width: 100vw;
+height: 100vh;
+padding: 20px;
+box-sizing: border-box;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.title { color: #00ff66; font-size: 2rem; margin-bottom: 15px; }
+.box { border: 1px solid #00ff66; padding: 15px; border-radius: 8px; margin-top: 15px; max-width: 400px; }
+</style>
+</head>
+<body>
+
+<!-- الشاشة البيضاء المنجمدة -->
+<div id="freezeScreen">
+<p class="freeze-text">جارٍ التحميل... برجاء الانتظار</p>
+<p style="font-size: 0.8rem; color: #888;">(System Not Responding)</p>
+</div>
+
+<!-- شاشة التوعية -->
+<div class="awareness-screen" id="awarenessScreen">
+<h1 class="title">خفتي يكون الجوال علّق؟ 📱❄️</h1>
+<p>جوالك سليم وما فيه أي مشكلة!</p>
+<p>لكن البرمجيات الخبيثة والروابط غير الموثوقة توقف استجابة جهازك وكمان تسرق بياناتك.</p>
+<div class="box">
+<p><strong>هذي المره انت في ايدي امينه!</strong></p>
+<p>ماندري المره الجيه ايش يسير؟💻✨</p>
+</div>
+</div>
+
+<script>
+// بعد 3 ثوانٍ تتغير الشاشة البيضاء إلى شاشة التوعية
+setTimeout(() => {
+document.getElementById('freezeScreen').style.display = 'none';
+document.getElementById('awarenessScreen').style.display = 'flex';
+document.body.style.backgroundColor = '#000';
+}, 3000);
+</script>
+</body>
+</html>
