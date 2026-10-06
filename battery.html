@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battery Critical</title>
+<style>
+body {
+margin: 0; background-color: #000; color: #fff;
+font-family: sans-serif; display: flex;
+justify-content: center; align-items: center;
+height: 100vh; text-align: center; overflow: hidden;
+}
+.fake-battery { font-size: 80px; color: #ff3333; animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0.3; } }
+.content { display: none; padding: 20px; }
+.title { color: #00ff66; font-size: 2rem; margin-bottom: 15px; }
+.box { border: 1px solid #00ff66; padding: 15px; border-radius: 8px; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<div id="scare">
+<div class="fake-battery">🪫</div>
+<p style="color: #aaa; font-size: 0.9rem;">Critical Error: Battery Drain Exploit Detected...</p>
+</div>
+
+<div class="content" id="realContent">
+<h1 class="title">خفتي صح؟ 🔋😁</h1>
+<p>جوالك ما طفى ولا فيه شيء!</p>
+<p>لكن الروابط المشبوهة ممكن فعلياً تستهلك موارد جهازك أو تخترقه بدون ما تدري.</p>
+<div class="box">
+<p><strong>ركزي معانا عشان تعرفي كيف تحمي جهازك!</strong></p>
+<p>ترا مو كل مرا تسلم الجره؟ 💻✨</p>
+</div>
+</div>
+
+<script>
+setTimeout(() => {
+document.getElementById('scare').style.display = 'none';
+document.getElementById('realContent').style.display = 'block';
+}, 3000);
+</script>
+</body>
+</html>
