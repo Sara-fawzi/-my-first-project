@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Camera Access Request</title>
+
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            background-color: #050505;
+
+            color: #ffffff;
+
+            font-family: 'Courier New', Courier, monospace;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            min-height: 100vh;
+
+            text-align: center;
+
+        }
+
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 400px;
+
+            padding: 20px;
+
+        }
+
+
+
+        /* محاكاة إطار الكاميرا */
+
+        .camera-box {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 250px;
+
+            background-color: #111;
+
+            border: 2px dashed #ff3366;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+
+        /* نقطة التسجيل الحمراء */
+
+        .rec-dot {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            width: 12px;
+
+            height: 12px;
+
+            background-color: #ff3366;
+
+            border-radius: 50%;
+
+            animation: blink 0.8s infinite;
+
+        }
+
+
+
+        @keyframes blink {
+
+            50% { opacity: 0; }
+
+        }
+
+
+
+        .loading-text {
+
+            color: #ff3366;
+
+            font-size: 0.9rem;
+
+            margin-top: 10px;
+
+        }
+
+
+
+        /* رسالة التوعية (تظهر بعد المقلب) */
+
+        .awareness-card {
+
+            display: none;
+
+            background: #0d1117;
+
+            border: 1px solid #00ff66;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            color: #ffffff;
+
+            font-family: sans-serif;
+
+            animation: fadeIn 0.5s ease-in;
+
+        }
+
+
+
+        .awareness-card h2 {
+
+            color: #00ff66;
+
+            margin-top: 0;
+
+        }
+
+
+
+        .event-btn {
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            background-color: #00ff66;
+
+            color: #000;
+
+            padding: 10px 20px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; transform: translateY(10px); }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <!-- شاشة المقلب -->
+
+        <div id="prankSection">
+
+            <div class="camera-box">
+
+                <div class="rec-dot"></div>
+
+                <span style="font-size: 3rem;">📸</span>
+
+                <p class="loading-text" id="statusText">Connecting to Front Camera...</p>
+
+            </div>
+
+            <p style="color: #aaa; font-size: 0.85rem;">Connecting to device sensors [OK]</p>
+
+        </div>
+
+
+
+        <!-- شاشة التوعية بعد المقلب -->
+
+        <div class="awareness-card" id="awarenessSection">
+
+            <h2>ابتسمي! الكاميرا تسجّل... 📸😉</h2>
+
+            <p><strong>لا تخافي، جوالك سليم والكاميرا لم تُفتح!</strong></p>
+
+            <p style="font-size: 0.95rem; color: #ccc; line-height: 1.5;">
+
+                لكن الثغرات والروابط الخبيثة قد تطلب صلاحيات الوصول لأجهزتكم بدون إذن واضح.
+
+            </p>
+
+            <hr style="border-color: #222; margin: 15px 0;">
+
+            <p>تعالي نتعرف على طرق حماية الخصوصية والأجهزة من التجسس.</p>
+
+            <p><strong>موعدنا: يوم الخميس في معرض الأمن السيبراني 💻✨</strong></p>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        // تغيير النص المحاكي للتوصيل ثم عرض التوعية
+
+        setTimeout(() => {
+
+            document.getElementById('statusText').innerText = "Accessing Camera Feed... [OK]";
+
+        }, 1500);
+
+
+
+        // إخفاء المقلب وإظهار التوعية بعد 3.5 ثوانٍ
+
+        setTimeout(() => {
+
+            document.getElementById('prankSection').style.display = 'none';
+
+            document.getElementById('awarenessSection').style.display = 'block';
+
+        }, 3500);
+
+    </script>
+
+</body>
+
+</html>
+
