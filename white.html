@@ -2,74 +2,68 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>System Error</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>System Crash</title>
 <style>
-body {
-margin: 0;
-background-color: #ffffff;
-color: #000;
-font-family: sans-serif;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-text-align: center;
+* { box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+html, body {
+margin: 0; padding: 0; width: 100%; height: 100dvh;
+background-color: #ffffff; font-family: -apple-system, sans-serif;
 overflow: hidden;
-cursor: wait;
 }
-.freeze-text {
-font-size: 1.1rem;
-color: #555;
-animation: pulse 1.5s infinite;
+#freezeScreen {
+width: 100%; height: 100dvh; display: flex; flex-direction: column;
+justify-content: center; align-items: center; background-color: #ffffff;
+color: #000; text-align: center; padding: 20px;
+animation: glitchBg 0.4s infinite alternate;
 }
-@keyframes pulse {
-0% { opacity: 1; }
-50% { opacity: 0.3; }
-100% { opacity: 1; }
+@keyframes glitchBg {
+0% { background-color: #ffffff; color: #000000; }
+50% { background-color: #111111; color: #ffffff; }
+100% { background-color: #ffffff; color: #000000; }
+}
+.freeze-box {
+border: 2px dashed red; padding: 25px; border-radius: 12px;
+background: rgba(255, 255, 255, 0.95); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 .awareness-screen {
-display: none;
-background-color: #000;
-color: #fff;
-width: 100vw;
-height: 100vh;
-padding: 20px;
-box-sizing: border-box;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+display: none; width: 100%; height: 100dvh; background-color: #000000;
+color: #ffffff; padding: 25px; flex-direction: column;
+justify-content: center; align-items: center; text-align: center;
 }
-.title { color: #00ff66; font-size: 2rem; margin-bottom: 15px; }
-.box { border: 1px solid #00ff66; padding: 15px; border-radius: 8px; margin-top: 15px; max-width: 400px; }
+.title { color: #00ff66; font-size: 1.8rem; margin-bottom: 15px; }
+.box { border: 1px solid #00ff66; padding: 15px; border-radius: 10px; margin-top: 15px; max-width: 350px; background: #0a0a0a; }
 </style>
 </head>
 <body>
 
-<!-- الشاشة البيضاء المنجمدة -->
 <div id="freezeScreen">
-<p class="freeze-text">جارٍ التحميل... برجاء الانتظار</p>
-<p style="font-size: 0.8rem; color: #888;">(System Not Responding)</p>
+<div class="freeze-box">
+<h2 style="margin:0 0 10px 0; color:#d32f2f;">⚠️ SYSTEM ERROR</h2>
+<p style="font-size: 1.1rem; font-weight: bold; margin: 5px 0;">توقف النظام عن الاستجابة!</p>
+<p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">(Kernel Panic - Screen Frozen)</p>
+</div>
 </div>
 
-<!-- شاشة التوعية -->
 <div class="awareness-screen" id="awarenessScreen">
-<h1 class="title">خفتي يكون الجوال علّق؟ 📱❄️</h1>
-<p>جوالك سليم وما فيه أي مشكلة!</p>
-<p>لكن البرمجيات الخبيثة والروابط غير الموثوقة توقف استجابة جهازك وكمان تسرق بياناتك.</p>
+<h1 class="title">حسبتي الرابط خربان والجوال علّق؟ 📱❄️</h1>
+<p><strong>لا تخافي، جوالك سليم 100%!</strong></p>
+<p>الروابط والمواقع المشبوهة قد تتسبب فعلياً في إيقاف استجابة جهازك أو استغلال ثغراته.</p>
 <div class="box">
-<p><strong>هذي المره انت في ايدي امينه!</strong></p>
-<p>ماندري المره الجيه ايش يسير؟💻✨</p>
+<p><strong>ركزي معانا عشان تعرفي ايش الي صار؟</strong></p>
+<p>لا تفتحي أي روابط مشبوهة أو ما تعرفي مصدرها وركزي معانا بـ المعرض 💻✨</p>
 </div>
 </div>
 
 <script>
-// بعد 3 ثوانٍ تتغير الشاشة البيضاء إلى شاشة التوعية
+window.addEventListener("load", () => setTimeout(() => window.scrollTo(0, 1), 0));
 setTimeout(() => {
 document.getElementById('freezeScreen').style.display = 'none';
 document.getElementById('awarenessScreen').style.display = 'flex';
-document.body.style.backgroundColor = '#000';
-}, 3000);
+document.body.style.backgroundColor = '#000000';
+}, 8000);
 </script>
 </body>
 </html>
