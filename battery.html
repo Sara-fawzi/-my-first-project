@@ -2,44 +2,94 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Battery Critical</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Battery Low</title>
 <style>
-body {
-margin: 0; background-color: #000; color: #fff;
-font-family: sans-serif; display: flex;
-justify-content: center; align-items: center;
-height: 100vh; text-align: center; overflow: hidden;
+* { box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+html, body {
+margin: 0; padding: 0; width: 100%; height: 100dvh;
+background-color: #000; color: #fff; font-family: -apple-system, SF Pro Text, sans-serif;
+overflow: hidden; display: flex; justify-content: center; align-items: center;
 }
-.fake-battery { font-size: 80px; color: #ff3333; animation: blink 1s infinite; }
-@keyframes blink { 50% { opacity: 0.3; } }
-.content { display: none; padding: 20px; }
-.title { color: #00ff66; font-size: 2rem; margin-bottom: 15px; }
-.box { border: 1px solid #00ff66; padding: 15px; border-radius: 8px; margin-top: 15px; }
+
+#scare {
+display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;
+}
+
+/* تصميم بطارية الآيفون الأصلية */
+.iphone-battery-container {
+display: flex; align-items: center; margin-bottom: 25px; position: relative;
+}
+
+.battery-body {
+width: 140px; height: 68px; border: 4px solid #fff; border-radius: 16px;
+padding: 4px; position: relative; box-sizing: border-box;
+}
+
+.battery-cap {
+width: 6px; height: 24px; background-color: #fff;
+border-top-right-radius: 4px; border-bottom-right-radius: 4px; margin-left: 2px;
+}
+
+.battery-level {
+width: 18%; height: 100%; background-color: #ff3b30; border-radius: 9px;
+animation: pulseLow 1s infinite alternate;
+}
+
+@keyframes pulseLow {
+0% { opacity: 1; }
+100% { opacity: 0.3; }
+}
+
+/* رمز الكابل تحت البطارية */
+.cable-icon {
+width: 2px; height: 25px; background: #8e8e93; margin-top: 10px; position: relative;
+}
+.cable-icon::after {
+content: ''; position: absolute; bottom: -6px; left: -4px;
+width: 10px; height: 6px; background: #8e8e93; border-radius: 2px;
+}
+
+.content { display: none; width: 100%; height: 100dvh; padding: 25px; text-align: center; flex-direction: column; justify-content: center; align-items: center; }
+.title { color: #00ff66; font-size: 1.8rem; margin-bottom: 15px; }
+.box { border: 1px solid #00ff66; padding: 15px; border-radius: 10px; margin-top: 15px; background: #0a0a0a; max-width: 350px; }
 </style>
 </head>
 <body>
 
+<!-- شاشة بطارية الآيفون المقلدة -->
 <div id="scare">
-<div class="fake-battery">🪫</div>
-<p style="color: #aaa; font-size: 0.9rem;">Critical Error: Battery Drain Exploit Detected...</p>
+<div class="iphone-battery-container">
+<div class="battery-body">
+<div class="battery-level"></div>
+</div>
+<div class="battery-cap"></div>
 </div>
 
+<h3 style="color: #ff3b30; margin: 0 0 8px 0; font-weight: 500; font-size: 1.1rem;">البطارية منخفضة جداً</h3>
+<p style="color: #8e8e93; font-size: 0.85rem; margin: 0;">جاري إيقاف التشغيل...</p>
+</div>
+
+<!-- شاشة التوعية -->
 <div class="content" id="realContent">
-<h1 class="title">خفتي صح؟ 🔋😁</h1>
-<p>جوالك ما طفى ولا فيه شيء!</p>
+<h1 class="title">خفتي الجوال يطفي؟ 🔋😁</h1>
+<p>جوالك ما طفى وبطاريته سليمة!</p>
 <p>لكن الروابط المشبوهة ممكن فعلياً تستهلك موارد جهازك أو تخترقه بدون ما تدري.</p>
 <div class="box">
-<p><strong>ركزي معانا عشان تعرفي كيف تحمي جهازك!</strong></p>
-<p>ترا مو كل مرا تسلم الجره؟ 💻✨</p>
+<p><strong>تعالي نتعلم كيف نحمي أجهزتنا!</strong></p>
+<p>لا تنسي مو كل مره تسلم الجره 💻✨</p>
 </div>
 </div>
 
 <script>
+window.addEventListener("load", () => setTimeout(() => window.scrollTo(0, 1), 0));
 setTimeout(() => {
 document.getElementById('scare').style.display = 'none';
-document.getElementById('realContent').style.display = 'block';
-}, 3000);
+const content = document.getElementById('realContent');
+content.style.display = 'flex';
+}, 8000);
 </script>
 </body>
 </html>
